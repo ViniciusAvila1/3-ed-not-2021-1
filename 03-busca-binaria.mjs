@@ -29,8 +29,10 @@ function buscaBinaria(vetor, valorBusca) {
         else {
             comps += 
             ini = meio + 1
+        }
     }
     return -1   // Valor de busca não existe no vetor
+    
 }
 
 const primos = [
@@ -120,7 +122,8 @@ console.log(buscaBinaria(primos, 6911), {comps})
 console.timeEnd('Buscando 6911')
 
 console.time('Buscando 1604')
-console.log(buscaBinaria(primos, 1604))
+console.log(buscaBinaria(primos, 1604), {comps})
 console.timeEnd('Buscando 1604')
-
 console.log('----------------------------------')
+
+import { nomes } from './includes/vetor-nomes.mjs'
