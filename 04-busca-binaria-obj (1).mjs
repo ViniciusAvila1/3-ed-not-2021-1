@@ -5,11 +5,11 @@ function buscaBinaria(vetor, fnComp) {
     let ini = 0
     let fim = vetor.length - 1
     let meio
-    while(fim >= ini) {
-        meio = Math.floor((fim + ini) / 2)   // Math.floor() arredonda pra baixo
+    while (fim >= ini) {
+        meio = Math.floor((fim + ini) / 2) // Math.floor() arredonda para baixo
         //console.log({ini, fim, meio, valorBusca})
         if (fnComp(vetor[meio]) === 0) {
-            comps++ 
+            comps++
             return meio // Achou
         }
         else if (fnComp(vetor[meio]) < 0) {
@@ -17,7 +17,7 @@ function buscaBinaria(vetor, fnComp) {
             fim = meio - 1
         }
         else {
-            comps += 
+            comps += 2
             ini = meio + 1
         }
     }
@@ -25,9 +25,9 @@ function buscaBinaria(vetor, fnComp) {
 }
 
 // Retornos da arrow function para busca binária
-// 0: igualdade
+//  0: igualdade
 // -1: o valor de busca é MENOR que o valor do objeto comparado
-// 1: o valor de busca é MAIOR que o valor do objeto comparado
+//  1: o valor de busca é MAIOR que o valor do objeto comparado 
 const comparaNomeBin = obj => {
     if(obj.first_name === 'FAUSTO') return 0
     else if('FAUSTO' < obj.first_name) return -1
@@ -39,7 +39,7 @@ import { objNomes } from './includes/vetor-obj-nomes.mjs'
 console.time('Buscando ZILMAR')
 console.log(buscaBinaria(objNomes, obj => {
     const valorBusca = 'ZILMAR'
-    if(objNomes.first_name === valorBusca) return 0
+    if(obj.first_name === valorBusca) return 0
     else if(valorBusca < obj.first_name) return -1
     else return 1
 }), {comps})
@@ -49,7 +49,7 @@ console.time('Buscando KATIUSCIA')
 console.log(buscaBinaria(objNomes, obj => {
     const valorBusca = 'KATIUSCIA'
     if(obj.first_name === valorBusca) return 0
-    else if (valorBusca < obj.first_name) return -1
+    else if(valorBusca < obj.first_name) return -1
     else return 1
 }), {comps})
 console.timeEnd('Buscando KATIUSCIA')
@@ -57,8 +57,8 @@ console.timeEnd('Buscando KATIUSCIA')
 console.time('Buscando nome ABRAAO')
 let posEncontrado = buscaBinaria(objNomes, obj => {
     const valorBusca = 'ABRAAO'
-    if(objNomes.first_name === valorBusca) return 0
-    else if (valorBusca < obj.first_name) return -1
+    if(obj.first_name === valorBusca) return 0
+    else if(valorBusca < obj.first_name) return -1
     else return 1
 })
 console.timeEnd('Buscando nome ABRAAO')
@@ -69,8 +69,7 @@ console.time('Buscando group_name MARIA')
 console.log(buscaBinaria(objNomes, obj => {
     const valorBusca = 'MARIA'
     if(objNomes.group_name === valorBusca) return 0
-    else if (valorBusca < obj.group_name) return -1
-    else return 0
+    else if(valorBusca < obj.group_name) return -1
+    else return 1
 }), {comps})
-console.timeEnd('Buscando group_name ABRAAO')
-
+console.timeEnd('Buscando group_name MARIA')
