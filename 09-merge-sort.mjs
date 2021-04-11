@@ -8,6 +8,8 @@
 
 */
 
+let comps = 0, divisoes = 0, juncoes = 0
+
 function mergeSort(vetor) {
     
     function mesclar(vetEsq, vetDir) {
@@ -21,6 +23,7 @@ function mergeSort(vetor) {
                 vetRes.push(vetDir[pDir])
                 pDir++
             }
+            comps++
         }
         // Descobrir de qual lado sobrou
         let sobra
@@ -30,34 +33,45 @@ function mergeSort(vetor) {
         // Sobra à direita
         else sobra = vetDir.slice(pDir)
 
-        // Retorna vetor de resultados + sobra
-        return [...vetRes, ...sobra]
+        // O vetor retornado será formado pelo vetor resultado + sobra
+        return [...vetRes, ...sobra]    // Concatenando os 2 vetores
     }
     
     // Para ser "desmontado", um vetor deve ter, pelo menos, 2 elementos
     if(vetor.length > 1) {
-        const meio = Math.floor(vetor.length / 2)
+        let meio = Math.floor(vetor.length / 2)
         // slice() fatia um vetor, copiando os elementos desde a posição inicial informada
-        // (inclusive) até a posição final (exclusive - a posição final NÃO entra)
+        // até a posição final (exclusive - A ÚLTIMA POSIÇÃO NÃO ENTRA NA FATIA GERADA)
         let vetEsq = vetor.slice(0, meio)
-        // Caso o segundo parâmetro de slice() seja omitido, serão copiados os elementos
-        // desde a posição informada até a posição final
+        // Quando o segundo parâmetro de slice() é omitido, são incluídos todos os elementos até o final
         let vetDir = vetor.slice(meio)
+        divisoes++
 
-        console.log({vetEsq, vetDir})
+        //console.log({vetEsq, vetDir})
 
         // Chamadas recursivas à função para continuar o processo de desmontagem
         vetEsq = mergeSort(vetEsq)
         vetDir = mergeSort(vetDir)
 
-        const vetFinal = mesclar(vetEsq, vetDir)
-        console.log({vetFinal})
+        let vetFinal = mesclar(vetEsq, vetDir)
+        juncoes++  
+        //console.log({vetFinal})
         
         return vetFinal
     }
-    return vetor    // Vetor de 1 elemento, não modificado
+    return vetor    // Condição de saída: vetor.length === 1
 }
 
-let nums = [7, 4, 9, 0, 6, 1, 8, 2, 5, 3]
-let numsOrd = mergeSort(nums)
-console.log({numsOrd})
+//let nums = [7, 4, 9, 0, 6, 1, 8, 2, 5, 3]
+//let numsOrd = mergeSort(nums)
+//console.log({numsOrd})
+
+import { nomes } from './includes/100-mil-nomes.mjs'
+
+//console.log('ANTES:', nomes)
+console.time('Ordenando nomes...')
+let nomesOrd = mergeSort(nomes)
+console.timeEnd('Ordenando nomes...')
+let memoria = process.memoryUsage().heapUsed / 1024 / 1024
+console.log({comps, divisoes, memoria})
+console.log('Depois: ', nomesOrd)

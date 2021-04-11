@@ -56,23 +56,12 @@ function mergeSort(vetor, fnComp) {
 
 import { candidatos } from './includes/candidatos-2018.mjs'
 
+// Ordenando pelo nome de urna do candidato
 comps = 0, divisoes = 0, juncoes = 0
-//console.log('ANTES:', candidatos)
-console.time('Ordenando candidatos...')
-// Ordenando pelo nome de urna (NM_URNA_CANDIDATO)
-//let candidatosOrd = mergeSort(candidatos, (obj1, obj2) => obj1.NM_URNA_CANDIDATO > obj2.NM_URNA_CANDIDATO)
-
-// Ordenação por dois níveis: primeiro por UE (SG_UF) e, dentro da UE, pelo nº do candidato (NR_CANDIDATO)
-let candidatosOrd = mergeSort(candidatos, (obj1, obj2) => {
-    if(obj1.SG_UE === obj2.SG_UE) {     // Empate de UE
-        // Desempate pelo NR_CANDIDATO
-        return obj1.NR_CANDIDATO > obj2.NR_CANDIDATO
-    }
-    else return obj1.SG_UE > obj2.SG_UE     // A diferenciação se dá por UE
-})
-
+//console.log('ANTES: ', candidatos)
+console.time('Ordenando por nome de registro...')
+let candidatosOrd = mergeSort(candidatos, (a,b) => a.NM_URNA_CANDIDATO > b.NM_URNA_CANDIDATO)
+console.timeEnd('Ordenando por nome de registro...')
 let memoria = process.memoryUsage().heapUsed / 1024 / 1024
-console.timeEnd('Ordenando candidatos...')
-console.log('DEPOIS:', candidatosOrd)
-//candidatosOrd.map(obj => console.log(obj))
 console.log({comps, divisoes, juncoes, memoria})
+console.log('DEPOIS: ', candidatosOrd)
