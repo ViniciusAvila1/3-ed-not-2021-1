@@ -13,7 +13,7 @@ function mergeSort(vetor) {
     function mesclar(vetEsq, vetDir) {
         let pEsq = 0, pDir = 0, vetRes = []
         while(pEsq < vetEsq.length && pDir < vetDir.length) {
-            if(vetEsq[pEsq] < vetDir[pDir]) {
+            if(vetEsq[pEsq] < vetDir[pDir]) {   //Se o da esquerda for o menor dos dois, joga ele no vetor de resultado e anda o ponteiro
                 vetRes.push(vetEsq[pEsq])
                 pEsq++
             }
@@ -46,7 +46,7 @@ function mergeSort(vetor) {
 
         console.log({vetEsq, vetDir})
 
-        // Chamadas recursivas à função
+        // Chamadas recursivas à função para continuar o processo de desmontagem
         vetEsq = mergeSort(vetEsq)
         vetDir = mergeSort(vetDir)
 
