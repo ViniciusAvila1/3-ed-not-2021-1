@@ -41,16 +41,11 @@ function bubbleSort(vetor) {
 // Melhor caso: vetor já ordenado
 //let nums = [0,1,2,3,4,5,6,7,8,9]
 
-console.log('Antes:', nums)
-bubbleSort(nums)
-console.log('Depois:', nums)
-console.log({totTrocas, comps, pass})
+import {nomes} from './includes/100-mil-nomes.mjs'
 
-import {empresas} from './includes/15-mil-empresas.mjs'
-
-console.log('Antes:', empresas)
+console.log('Antes:', nomes)
 console.time('Ordenando empresas...')
-bubbleSort(empresas)
+bubbleSort(nomes)
 console.timeEnd('Ordenando empresas...')
 console.log({totTrocas, comps, pass})
-console.log('Depois:', empresas)
+console.log('Depois:', nomes)
