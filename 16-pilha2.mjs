@@ -14,7 +14,7 @@ console.log(pilha.print())
 let textoRev = ''
 
 // Desempilhamento
-while(! pilha.length){
+while(! pilha.empty){
     textoRev += pilha.pop()
 }
 console.log(textoRev)
