@@ -1,4 +1,4 @@
-import { LinkedList }  from './lib/LinkedList.mjs'
+import { LinkedList } from './lib/LinkedList.mjs'
 
 let lista = new LinkedList()
 console.log(lista.print())
