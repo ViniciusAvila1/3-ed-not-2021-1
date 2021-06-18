@@ -19,9 +19,9 @@
     3) No código, remova os seguintes nodos: 58, 35, 87 e 51.
 
     4) Execute os métodos de percurso da árvore e anote, abaixo, os respectivos resultados após as remoções:
-        a) Percurso em-ordem:
-        b) Percurso pré-ordem:
-        c) Percurso pós-ordem:
+        a) Percurso em-ordem:  1,  9, 14, 16, 20, 29, 43, 44, 60, 72, 79, 86, 92, 99
+        b) Percurso pré-ordem: 44, 16,  9,  1, 14, 29, 20, 43, 86, 72, 60, 79, 99, 92 (conta só na descida)
+        c) Percurso pós-ordem: 1, 14,  9, 20, 43, 29, 16, 60, 79, 72, 92, 99, 86, 44 (conta só na subida)
 
     5) Anexe este arquivo, com o código da árvore binária de busca, ao
         entregar a prova.
@@ -54,6 +54,7 @@ arvore.insert(35)
 arvore.insert(29)
 arvore.insert(43)
 arvore.insert(20)
+// Lado esquerdo inserido
 
 // No código, remova os seguintes nodos: 58, 35, 87 e 51
 arvore.remove(58)
